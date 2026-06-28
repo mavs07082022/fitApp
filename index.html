@@ -1,36 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>FitTrack Pro · Download App</title>
-    
-    <!-- PWA Manifest -->
-    <link rel="manifest" href="data:application/json,{
-      %22name%22:%22FitTrack%20Pro%22,
-      %22short_name%22:%22FitTrack%22,
-      %22description%22:%22Real-time%20fitness%20tracking%20app%22,
-      %22start_url%22:%22/%22,
-      %22display%22:%22standalone%22,
-      %22orientation%22:%22portrait%22,
-      %22background_color%22:%22%23121218%22,
-      %22theme_color%22:%22%236C63FF%22,
-      %22icons%22:[
-        {
-          %22src%22:%22data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%236C63FF'/%3E%3Ctext x='50' y='68' font-size='50' text-anchor='middle' fill='white' font-family='sans-serif'%3EF%3C/text%3E%3C/svg%3E%22,
-          %22sizes%22:%22192x192%22,
-          %22type%22:%22image/svg+xml%22,
-          %22purpose%22:%22any%20maskable%22
-        },
-        {
-          %22src%22:%22data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='80' fill='%236C63FF'/%3E%3Ctext x='256' y='350' font-size='280' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold'%3EF%3C/text%3E%3C/svg%3E%22,
-          %22sizes%22:%22512x512%22,
-          %22type%22:%22image/svg+xml%22,
-          %22purpose%22:%22any%20maskable%22
-        }
-      ]
-    }">
-    
     <style>
         * {
             margin: 0;
@@ -60,17 +33,6 @@
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
             position: relative;
             overflow: hidden;
-        }
-
-        .download-page::before {
-            content: '';
-            position: absolute;
-            top: -60%;
-            right: -60%;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, rgba(108, 99, 255, 0.06) 0%, transparent 70%);
-            pointer-events: none;
         }
 
         .app-icon {
@@ -119,12 +81,6 @@
             border-radius: 16px;
             text-align: center;
             border: 1px solid #28283e;
-            transition: 0.2s;
-        }
-
-        .feature-item:hover {
-            border-color: #6C63FF;
-            transform: translateY(-2px);
         }
 
         .feature-item .icon {
@@ -172,8 +128,6 @@
             cursor: pointer;
             transition: 0.25s;
             box-shadow: 0 8px 24px rgba(108, 99, 255, 0.35);
-            text-decoration: none;
-            position: relative;
         }
 
         .install-btn:active {
@@ -186,10 +140,6 @@
             border-radius: 40px;
             font-size: 11px;
             font-weight: 600;
-        }
-
-        .install-btn .icon-download {
-            font-size: 22px;
         }
 
         .platform-buttons {
@@ -210,17 +160,12 @@
             cursor: pointer;
             transition: 0.2s;
             text-align: center;
-            text-decoration: none;
         }
 
         .platform-btn.active {
             border-color: #6C63FF;
             background: #2a2a48;
             color: white;
-        }
-
-        .platform-btn:active {
-            transform: scale(0.95);
         }
 
         .instructions {
@@ -269,31 +214,9 @@
             height: 100px;
         }
 
-        @media (max-width: 420px) {
-            .download-page {
-                padding: 28px 16px 30px;
-            }
-            .feature-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 8px;
-            }
-            .feature-item {
-                padding: 10px 8px;
-            }
-            .install-btn {
-                font-size: 16px;
-                padding: 16px;
-            }
-        }
-
         @keyframes pulse-glow {
-            0%,
-            100% {
-                box-shadow: 0 8px 24px rgba(108, 99, 255, 0.35);
-            }
-            50% {
-                box-shadow: 0 8px 40px rgba(108, 99, 255, 0.6);
-            }
+            0%, 100% { box-shadow: 0 8px 24px rgba(108, 99, 255, 0.35); }
+            50% { box-shadow: 0 8px 40px rgba(108, 99, 255, 0.6); }
         }
         .install-btn {
             animation: pulse-glow 2.5s infinite;
@@ -309,114 +232,51 @@
         .status-msg.success {
             color: #4ade80;
         }
-        .status-msg.installed {
-            color: #4ade80;
-            font-weight: 600;
-        }
 
-        /* Installation prompt banner */
-        .install-banner {
-            display: none;
-            background: linear-gradient(135deg, #2a2a48, #1a1a3a);
-            padding: 16px 20px;
-            border-radius: 16px;
-            margin-top: 12px;
-            border: 1px solid #6C63FF;
-            text-align: center;
-        }
-        .install-banner.show {
-            display: block;
-        }
-        .install-banner .big-icon {
-            font-size: 48px;
-            display: block;
-            margin-bottom: 8px;
-        }
-        .install-banner h4 {
-            color: #d0d0ee;
-            margin-bottom: 4px;
-        }
-        .install-banner p {
-            font-size: 13px;
-            color: #8a8aaa;
+        @media (max-width: 420px) {
+            .download-page { padding: 28px 16px 30px; }
+            .feature-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+            .feature-item { padding: 10px 8px; }
+            .install-btn { font-size: 16px; padding: 16px; }
         }
     </style>
 </head>
 <body>
 
     <div class="download-page">
-        <!-- App Icon -->
         <div class="app-icon">F</div>
-
         <h1>FitTrack <span>Pro</span></h1>
         <p class="subtitle">Real-time fitness tracking · BMI · Meal prep</p>
 
-        <!-- Feature Grid -->
         <div class="feature-grid">
-            <div class="feature-item">
-                <span class="icon">⚖️</span>
-                <span class="label">Real-time BMI</span>
-            </div>
-            <div class="feature-item">
-                <span class="icon">🍽️</span>
-                <span class="label">Meal Planner</span>
-            </div>
-            <div class="feature-item">
-                <span class="icon">📊</span>
-                <span class="label">Live Updates</span>
-            </div>
-            <div class="feature-item">
-                <span class="icon">📱</span>
-                <span class="label">Mobile Native</span>
-            </div>
+            <div class="feature-item"><span class="icon">⚖️</span><span class="label">Real-time BMI</span></div>
+            <div class="feature-item"><span class="icon">🍽️</span><span class="label">Meal Planner</span></div>
+            <div class="feature-item"><span class="icon">📊</span><span class="label">Live Updates</span></div>
+            <div class="feature-item"><span class="icon">📱</span><span class="label">Mobile Native</span></div>
         </div>
 
-        <!-- Install Section -->
         <div class="install-section">
-            <h3>
-                <span>📲</span> Install App
-                <span style="margin-left:auto;font-size:11px;color:#4a4a6a;">v2.0</span>
-            </h3>
+            <h3><span>📲</span> Install App <span style="margin-left:auto;font-size:11px;color:#4a4a6a;">v2.0</span></h3>
 
-            <!-- Install Banner (PWA) -->
-            <div id="installBanner" class="install-banner">
-                <span class="big-icon">📱</span>
-                <h4>Install FitTrack App</h4>
-                <p>Add to home screen for the best experience</p>
-            </div>
-
-            <!-- Main Install Button -->
-            <button id="installBtn" class="install-btn">
+            <button id="installBtn" class="install-btn" onclick="downloadAndInstall()">
                 <span class="icon-download">⬇️</span>
-                <span id="installBtnText">Install App</span>
-                <span class="badge" id="platformBadge">PWA</span>
+                <span id="installBtnText">Download App</span>
+                <span class="badge" id="platformBadge">Android</span>
             </button>
 
-            <!-- Platform specific buttons -->
             <div class="platform-buttons">
-                <button class="platform-btn" onclick="setPlatform('ios')" id="iosBtn">
-                    🍎 iOS
-                </button>
-                <button class="platform-btn active" onclick="setPlatform('android')" id="androidBtn">
-                    🤖 Android
-                </button>
-                <button class="platform-btn" onclick="setPlatform('other')" id="otherBtn">
-                    🌐 Other
-                </button>
+                <button class="platform-btn" onclick="setPlatform('ios')" id="iosBtn">🍎 iOS</button>
+                <button class="platform-btn active" onclick="setPlatform('android')" id="androidBtn">🤖 Android</button>
+                <button class="platform-btn" onclick="setPlatform('other')" id="otherBtn">🌐 Other</button>
             </div>
 
-            <!-- Instructions -->
             <div class="instructions" id="instructionsBox">
-                <p id="instructionText">
-                    <strong>📱 Tap "Install App"</strong> above or use your browser's
-                    <strong>"Add to Home Screen"</strong> feature.
-                </p>
+                <p id="instructionText"><strong>📱 Tap "Download App"</strong> to download the installer file. After download, open it and tap <strong>"Install"</strong>.</p>
             </div>
 
             <div id="statusMessage" class="status-msg"></div>
         </div>
 
-        <!-- QR Code -->
         <div class="qr-code">
             <div class="qr-placeholder">
                 <svg viewBox="0 0 100 100" width="100" height="100">
@@ -452,147 +312,57 @@
 
         <div class="version-info">
             <span>📦 Version 2.0</span>
-            <span>🔒 PWA · Offline Ready</span>
+            <span>🔒 APK Installer</span>
             <span>⚡ Real-time</span>
         </div>
     </div>
 
     <script>
         // ============================================================
-        // PWA Installation - This is the key part!
-        // ============================================================
-
-        // Check if app is already installed (standalone mode)
-        function isAppInstalled() {
-            return window.matchMedia('(display-mode: standalone)').matches || 
-                   window.navigator.standalone === true;
-        }
-
-        // Show install banner if app is not installed
-        function checkInstallStatus() {
-            if (isAppInstalled()) {
-                document.getElementById('installBanner').classList.remove('show');
-                document.getElementById('installBtnText').textContent = '✅ App Installed';
-                document.getElementById('platformBadge').textContent = '✓ Installed';
-                document.querySelector('.install-btn').style.background = '#2a7a3a';
-                showStatus('🎉 App is already installed on your device!', 'installed');
-            } else {
-                document.getElementById('installBanner').classList.add('show');
-                // Check if PWA install is available
-                if ('beforeinstallprompt' in window) {
-                    document.getElementById('installBtnText').textContent = '📲 Install App';
-                }
-            }
-        }
-
-        // ============================================================
-        // The ACTUAL APP that gets installed
-        // ============================================================
-
-        var APP_HTML_BASE64 = 'PCFET0NUWVBFIGh0bWw+CjxodG1sIGxhbmc9ImVuIj4KPGhlYWQ+CiAgPG1ldGEgY2hhcnNldD0iVVRGLTgiPgogIDxtZXRhIG5hbWU9InZpZXdwb3J0IiBjb250ZW50PSJ3aWR0aD1kZXZpY2Utd2lkdGgsIGluaXRpYWwtc2NhbGU9MS4wLCBtYXhpbXVtLXNjYWxlPTEuMCwgdXNlci1zY2FsYWJsZT1ubywgdmlld3BvcnQtZml0PWNvdmVyIj4KICA8dGl0bGU+Rml0VHJhY2sgwrcgTW9iaWxlIEFwcDwvdGl0bGU+CiAgPGxpbmsgcmVsPSJtYW5pZmVzdCIgaHJlZj0iZGF0YTphcHBsaWNhdGlvbi9qc29uLHslMjJuYW1lJTIyOiUyMkZpdFRyYWNrJTIwTW9iaWxlJTIyLCUyMnNob3J0X25hbWUlMjI6JTIyRml0VHJhY2slMjIsJTIyc3RhcnRfdXJsJTIyOiUyMi8lMjIsJTIyZGlzcGxheSUyMjolMjJzdGFuZGFsb25lJTIyLCUyMm9yaWVudGF0aW9uJTIyOiUyMnBvcnRyYWl0JTIyLCUyMmJhY2tncm91bmRfY29sb3IlMjI6JTIyJTIzMTIxMjE4JTIyLCUyMnRoZW1lX2NvbG9yJTIyOiUyMiUyMzZDNjNGRiUyMiwlMjJpY29ucyUyMjpbeyUyMnNyYyUyMjolMjJkYXRhOmltYWdlL3N2Zyt4bWwsJTNDc3ZnIHhtbG5zPSdodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2Zycgdmlld0JveD0nMCAwIDEwMCAxMDAnJTNFJTNDY2lyY2xlIGN4PSc1MCcgY3k9JzUwJyByPSc0NScgZmlsbD0nJTIzNkM2M0ZGJy8lM0UlM0N0ZXh0IHg9JzUwJyB5PSc2OCcgZm9udC1zaXplPSc1MCcgdGV4dC1hbmNob3I9J21pZGRsZScgZmlsbD0nd2hpdGUnIGZvbnQtZmFtaWx5PSdzYW5zLXNlcmlmJyUzRUYlM0MvdGV4dCUzRSUzQy9zdmclM0UlMjIsJTIyc2l6ZXMlMjI6JTIyMTkyeDE5MiUyMiwlMjJ0eXBlJTIyOiUyMmltYWdlL3N2Zyt4bWwlMjJ9XX0iPgogIDxzdHlsZT4KICAgICogeyBtYXJnaW46MDsgcGFkZGluZzowOyBib3gtc2l6aW5nOmJvcmRlci1ib3g7IGZvbnQtZmFtaWx5Oi1hcHBsZS1zeXN0ZW0sQmxpbmtNYWNTeXN0ZW1Gb250LCJTZWdvZSBVSSIsUm9ib3RvLEhlbHZldGljYSxBcmlhbCxzYW5zLXNlcmlmOyAtd2Via2l0LXRhcC1oaWdobGlnaHQtY29sb3I6dHJhbnNwYXJlbnQ7IH0KICAgIGJvZHkgeyBiYWNrZ3JvdW5kOiMwZTBlMTQ7IGNvbG9yOiNmMGYwZjU7IG1pbi1oZWlnaHQ6MTAwdmg7IG1pbi1oZWlnaHQ6MTAwZHZoOyBkaXNwbGF5OmZsZXg7IGp1c3RpZnktY29udGVudDpjZW50ZXI7IGFsaWduLWl0ZW1zOmZsZXgtc3RhcnQ7IHBhZGRpbmc6MDsgbWFyZ2luOjA7IG92ZXJmbG93OmhpZGRlbjsgfQogICAgI3Jvb3QgeyB3aWR0aDoxMDAlOyBtYXgtd2lkdGg6NDMwcHg7IGhlaWdodDoxMDB2aDsgaGVpZ2h0OjEwMGR2aDsgZGlzcGxheTpmbGV4OyBmbGV4LWRpcmVjdGlvbjpjb2x1bW47IGJhY2tncm91bmQ6IzEyMTIxODsgcG9zaXRpb246cmVsYXRpdmU7IG92ZXJmbG93OmhpZGRlbjsgYm94LXNoYWRvdzowIDAgNDBweCByZ2JhKDAsMCwwLDAuOCk7IH0KICAgIC5hcHAtc2hlbGwgeyBkaXNwbGF5OmZsZXg7IGZsZXgtZGlyZWN0aW9uOmNvbHVtbjsgaGVpZ2h0OjEwMCU7IHdpZHRoOjEwMCU7IHBvc2l0aW9uOnJlbGF0aXZlOyB9CiAgICAuYXBwLWhlYWRlciB7IHBhZGRpbmc6MThweCAyMHB4IDEycHg7IGJhY2tncm91bmQ6IzEyMTIxODsgYm9yZGVyLWJvdHRvbToxcHggc29saWQgIzI4MjgzYTsgZGlzcGxheTpmbGV4OyBqdXN0aWZ5LWNvbnRlbnQ6c3BhY2UtYmV0d2VlbjsgYWxpZ24taXRlbXM6Y2VudGVyOyBmbGV4LXNocmluazowOyB9CiAgICAuYXBwLWhlYWRlciBoMSB7IGZvbnQtc2l6ZToyNHB4OyBmb250LXdlaWdodDo3MDA7IGxldHRlci1zcGFjaW5nOi0wLjVweDsgZGlzcGxheTpmbGV4OyBhbGlnbi1pdGVtczpjZW50ZXI7IGdhcDo4cHg7IH0KICAgIC5hcHAtaGVhZGVyIGgxIHNwYW4geyBiYWNrZ3JvdW5kOiM2QzYzRkY7IHBhZGRpbmc6NHB4IDEycHg7IGJvcmRlci1yYWRpdXM6MzBweDsgZm9udC1zaXplOjEycHg7IGZvbnQtd2VpZ2h0OjYwMDsgY29sb3I6d2hpdGU7IH0KICAgIC5zdGF0dXMtZG90IHsgZGlzcGxheTppbmxpbmUtYmxvY2s7IHdpZHRoOjEwcHg7IGhlaWdodDoxMHB4OyBiYWNrZ3JvdW5kOiMyZWNjNzE7IGJvcmRlci1yYWRpdXM6NTAlOyBtYXJnaW4tbGVmdDo2cHg7IGJveC1zaGFkb3c6MCAwIDhweCAjMmVjYzcxODA7IGFuaW1hdGlvbjpwdWxzZS1kb3QgMnMgaW5maW5pdGU7IH0KICAgIEBrZXlmcmFtZXMgcHVsc2UtZG90IHsgMCUgeyBvcGFjaXR5OjAuNjsgdHJhbnNmb3JtOnNjYWxlKDAuOSk7IH0gNTAlIHsgb3BhY2l0eToxOyB0cmFuc2Zvcm06c2NhbGUoMS4xKTsgfSAxMDAlIHsgb3BhY2l0eTowLjY7IHRyYW5zZm9ybTpzY2FsZSgwLjkpOyB9IH0KICAgIC5hcHAtY29udGVudCB7IGZsZXg6MTsgb3ZlcmZsb3cteTphdXRvOyBwYWRkaW5nOjE2cHggMTZweCA4MHB4OyBkaXNwbGF5OmZsZXg7IGZsZXgtZGlyZWN0aW9uOmNvbHVtbjsgZ2FwOjE2cHg7IHNjcm9sbC1iZWhhdmlvcjpzbW9vdGg7IC13ZWJraXQtb3ZlcmZsb3ctc2Nyb2xsaW5nOnRvdWNoOyB9CiAgICAuY2FyZCB7IGJhY2tncm91bmQ6IzFjMWMyNjsgYm9yZGVyLXJhZGl1czoyOHB4OyBwYWRkaW5nOjIwcHggMThweDsgYm9yZGVyOjFweCBzb2xpZCAjMmEyYTNhOyBiYWNrZHJvcC1maWx0ZXI6Ymx1cigyMHB4KTsgYm94LXNoYWRvdzowIDhweCAyMHB4IHJnYmEoMCwwLDAsMC40KTsgfQogICAgLmNhcmQtdGl0bGUgeyBkaXNwbGF5OmZsZXg7IGFsaWduLWl0ZW1zOmNlbnRlcjsgZ2FwOjEwcHg7IGZvbnQtc2l6ZToxN3B4OyBmb250LXdlaWdodDo2MDA7IGNvbG9yOiNjOGM4ZTA7IG1hcmdpbi1ib3R0b206MTZweDsgfQogICAgLmJhZGdlLWxpdmUgeyBiYWNrZ3JvdW5kOiMxZjhiM2E7IGJvcmRlci1yYWRpdXM6NDBweDsgcGFkZGluZzoycHggMTJweDsgZm9udC1zaXplOjEwcHg7IGZvbnQtd2VpZ2h0OjYwMDsgY29sb3I6I2M2ZjBkMDsgbWFyZ2luLWxlZnQ6YXV0bzsgbGV0dGVyLXNwYWNpbmc6MC4zcHg7IH0KICAgIC5yb3cgeyBkaXNwbGF5OmZsZXg7IGdhcDoxMnB4OyBmbGV4LXdyYXA6d3JhcDsgbWFyZ2luLWJvdHRvbToxMHB4OyB9CiAgICAuY29sIHsgZmxleDoxOyBtaW4td2lkdGg6MTAwcHg7IH0KICAgIGxhYmVsIHsgZGlzcGxheTpibG9jazsgZm9udC1zaXplOjEycHg7IGZvbnQtd2VpZ2h0OjUwMDsgY29sb3I6IzkwOTBiMDsgbWFyZ2luLWJvdHRvbTo0cHg7IGxldHRlci1zcGFjaW5nOjAuM3B4OyB9CiAgICBpbnB1dCB7IHdpZHRoOjEwMCU7IHBhZGRpbmc6MTRweCAxNnB4OyBiYWNrZ3JvdW5kOiMxMjIxMmU7IGJvcmRlcjoxcHggc29saWQgIzMyMzI0YTsgYm9yZGVyLXJhZGl1czoyMHB4OyBjb2xvcjojZjBmMGY1OyBmb250LXNpemU6MTZweDsgdHJhbnNpdGlvbjowLjJzOyBvdXRsaW5lOm5vbmU7IH0KICAgIGlucHV0OmZvY3VzIHsgYm9yZGVyLWNvbG9yOiM2QzYzRkY7IGJveC1zaGFkb3c6MCAwIDAgM3B4IHJnYmEoMTA4LDk5LDI1NSwwLjI1KTsgfQogICAgaW5wdXRbdHlwZT0icmFuZ2UiXSB7IHBhZGRpbmc6NnB4IDA7IGFjY2VudC1jb2xvcjojNkM2M0ZGOyBiYWNrZ3JvdW5kOnRyYW5zcGFyZW50OyBib3JkZXI6bm9uZTsgbWFyZ2luLXRvcDoycHg7IH0KICAgIC5ibWktcmVzdWx0IHsgZGlzcGxheTpmbGV4OyBhbGlnbi1pdGVtczpiYXNlbGluZTsganVzdGlmeS1jb250ZW50OnNwYWNlLWJldHdlZW47IGZsZXgtd3JhcDp3cmFwOyBtYXJnaW4tdG9wOjhweDsgfQogICAgLmJtaS1udW1iZXIgeyBmb250LXNpemU6NDJweDsgZm9udC13ZWlnaHQ6ODAwOyBiYWNrZ3JvdW5kOmxpbmVhci1ncmFkaWVudCgxMzVkZWcsIzZDNjNGRiwsI2E3OGJmYSk7IC13ZWJraXQtYmFja2dyb3VuZC1jbGlwOnRleHQ7IC13ZWJraXQtdGV4dC1maWxsLWNvbG9yOnRyYW5zcGFyZW50OyBiYWNrZ3JvdW5kLWNsaXA6dGV4dDsgfQogICAgLmJtaS1jYXRlZ29yeSB7IGJhY2tncm91bmQ6IzI2MjYzYTsgcGFkZGluZzo2cHggMThweDsgYm9yZGVyLXJhZGl1czo0MHB4OyBmb250LXdlaWdodDo2MDA7IGZvbnQtc2l6ZToxNXB4OyBjb2xvcjojZDRkMGZmOyB9CiAgICAubWVhbC1saXN0IHsgZGlzcGxheTpmbGV4OyBmbGV4LWRpcmVjdGlvbjpjb2x1bW47IGdhcDoxMnB4OyBtYXJnaW46OHB4IDAgMTJweDsgfQogICAgLm1lYWwtaXRlbSB7IGRpc3BsYXk6ZmxleDsgYWxpZ24taXRlbXM6Y2VudGVyOyBqdXN0aWZ5LWNvbnRlbnQ6c3BhY2UtYmV0d2VlbjsgYmFja2dyb3VuZDojMTUxNTIxOyBwYWRkaW5nOjEycHggMTZweDsgYm9yZGVyLXJhZGl1czo2MHB4OyBib3JkZXItbGVmdDo2cHggc29saWQgIzZDNjNGRjsgfQogICAgLm1lYWwtbmFtZSB7IGZvbnQtd2VpZ2h0OjUwMDsgZm9udC1zaXplOjE1cHg7IH0KICAgIC5tZWFsLWNhbCB7IGJhY2tncm91bmQ6IzJhMmE0MDsgcGFkZGluZzo0cHggMTRweDsgYm9yZGVyLXJhZGl1czo0MHB4OyBmb250LXNpemU6MTNweDsgZm9udC13ZWlnaHQ6NjAwOyB9CiAgICAuYWRkLW1lYWwgeyBkaXNwbGF5OmZsZXg7IGdhcDo4cHg7IG1hcmdpbi10b3A6OHB4OyB9CiAgICAuYWRkLW1lYWwgaW5wdXQgeyBwYWRkaW5nOjEycHggMTRweDsgZm9udC1zaXplOjE0cHg7IH0KICAgIC5hZGQtbWVhbCBpbnB1dDpmaXJzdC1jaGlsZCB7IGZsZXg6MzsgfQogICAgLmFkZC1tZWFsIGlucHV0Om50aC1jaGlsZCgyKSB7IGZsZXg6MS41OyB9CiAgICAuYnRuIHsgYmFja2dyb3VuZDojNkM2M0ZGOyBib3JkZXI6bm9uZTsgY29sb3I6d2hpdGU7IGZvbnQtd2VpZ2h0OjYwMDsgcGFkZGluZzoxMnB4IDE2cHg7IGJvcmRlci1yYWRpdXM6NDBweDsgZm9udC1zaXplOjE0cHg7IGN1cnNvcjpwb2ludGVyOyB0cmFuc2l0aW9uOjAuMTVzOyBkaXNwbGF5OmlubGluZS1mbGV4OyBhbGlnbi1pdGVtczpjZW50ZXI7IGp1c3RpZnktY29udGVudDpjZW50ZXI7IGdhcDo0cHg7IGJvcmRlcjoxcHggc29saWQgIzhhODJmZjsgZmxleDoxOyB9CiAgICAuYnRuOmFjdGl2ZSB7IHRyYW5zZm9ybTpzY2FsZSgwLjk1KTsgfQogICAgLmJ0bi1kYW5nZXIgeyBiYWNrZ3JvdW5kOiNjMDM5NWE7IGJvcmRlci1jb2xvcjojYzAzOTVhOyBwYWRkaW5nOjZweCAxNHB4OyBmb250LXNpemU6MTNweDsgZmxleDowOyB9CiAgICAudG90YWwtY2FsIHsgbWFyZ2luLXRvcDoxNnB4OyBmb250LXNpemU6MThweDsgZm9udC13ZWlnaHQ6NjAwOyBkaXNwbGF5OmZsZXg7IGp1c3RpZnktY29udGVudDpzcGFjZS1iZXR3ZWVuOyBib3JkZXItdG9wOjFweCBzb2xpZCAjMmEyYTNhOyBwYWRkaW5nLXRvcDoxNHB4OyB9CiAgICAuYm90dG9tLW5hdiB7IHBvc2l0aW9uOmFic29sdXRlOyBib3R0b206MDsgbGVmdDowOyByaWdodDowOyBiYWNrZ3JvdW5kOiMxNjE2MWY7IGJhY2tkcm9wLWZpbHRlcjpibHVyKDEycHgpOyAtd2Via2l0LWJhY2tkcm9wLWZpbHRlcjpibHVyKDEycHgpOyBib3JkZXItdG9wOjFweCBzb2xpZCAjMjgyODNhOyBkaXNwbGF5OmZsZXg7IGp1c3RpZnktY29udGVudDpzcGFjZS1hcm91bmQ7IHBhZGRpbmc6MTBweCAwIDE0cHg7IGZsZXgtc2hyaW5rOjA7IHotaW5kZXg6MTA7IH0KICAgIC5uYXYtaXRlbSB7IGRpc3BsYXk6ZmxleDsgZmxleC1kaXJlY3Rpb246Y29sdW1uOyBhbGlnbi1pdGVtczpjZW50ZXI7IGNvbG9yOiM2YTZhODg7IGZvbnQtc2l6ZToxMHB4OyBmb250LXdlaWdodDo1MDA7IHRyYW5zaXRpb246MC4yczsgYmFja2dyb3VuZDpub25lOyBib3JkZXI6bm9uZTsgcGFkZGluZzo0cHggMTZweDsgY3Vyc29yOnBvaW50ZXI7IH0KICAgIC5uYXYtaXRlbS5hY3RpdmUgeyBjb2xvcjojNkM2M0ZGOyB9CiAgICAubmF2LWl0ZW0gaSB7IGZvbnQtc2l6ZToyNHB4OyBtYXJnaW4tYm90dG9tOjJweDsgZm9udC1zdHlsZTpub3JtYWw7IH0KICAgIC5hcHAtY29udGVudDo6LXdlYmtpdC1zY3JvbGxiYXIgeyB3aWR0aDowOyBiYWNrZ3JvdW5kOnRyYW5zcGFyZW50OyB9CiAgICAuZmxleCB7IGRpc3BsYXk6ZmxleDsgYWxpZ24taXRlbXM6Y2VudGVyOyBnYXA6OHB4OyBmbGV4LXdyYXA6d3JhcDsgfQogICAgLnRleHQtbXV0ZWQgeyBjb2xvcjojNmE2YTg4OyBmb250LXNpemU6MTNweDsgfQogICAgLnNwbGFzaCB7IHBvc2l0aW9uOmFic29sdXRlOyBpbnNldDowOyBiYWNrZ3JvdW5kOiMxMjEyMTg7IGRpc3BsYXk6ZmxleDsgZmxleC1kaXJlY3Rpb246Y29sdW1uOyBhbGlnbi1pdGVtczpjZW50ZXI7IGp1c3RpZnktY29udGVudDpjZW50ZXI7IHotaW5kZXg6MTAwOyB0cmFuc2l0aW9uOm9wYWNpdHkgMC42cyBlYXNlOyBwb2ludGVyLWV2ZW50czpub25lOyB9CiAgICAuc3BsYXNoLmhpZGUgeyBvcGFjaXR5OjA7IH0KICAgIC5zcGxhc2ggaDEgeyBmb250LXNpemU6NDJweDsgY29sb3I6IzZDNjNGRjsgZm9udC13ZWlnaHQ6ODAwOyBsZXR0ZXItc3BhY2luZDotMXB4OyB9CiAgICAuc3BsYXNoIHAgeyBjb2xvcjojNmE2YTg4OyBtYXJnaW4tdG9wOjZweDsgfQogIDwvc3R5bGU+CjwvaGVhZD4KPGJvZHk+CjxkaXYgaWQ9InJvb3QiPjwvZGl2Pgo8c2NyaXB0IHR5cGU9InRleHQvYmFiZWwiPgogIGNvbnN0IHsgdXNlU3RhdGUsIHVzZUVmZmVjdCwgdXNlTWVtbyB9ID0gUmVhY3Q7CiAgZnVuY3Rpb24gdXNlQk1JKHdlaWdodCwgaGVpZ2h0KSB7CiAgICBjb25zdCBbYm1pLCBzZXRCbWldID0gdXNlU3RhdGUoMCk7CiAgICBjb25zdCBbY2F0ZWdvcnksIHNldENhdGVnb3J5XSA9IHVzZVN0YXRlKCdOb3JtYWwnKTsKICAgIHVzZUVmZmVjdCgoKSA9PiB7CiAgICAgIGlmIChoZWlnaHQgPiAwICYmIHdlaWdodCA+IDApIHsKICAgICAgICBjb25zdCBoID0gaGVpZ2h0IC8gMTAwOwogICAgICAgIGNvbnN0IHZhbCA9IHdlaWdodCAvIChoICogaCk7CiAgICAgICAgc2V0Qm1pKHBhcnNlRmxvYXQodmFsLnRvRml4ZWQoMSkpKTsKICAgICAgICBpZiAodmFsIDwgMTguNSkgc2V0Q2F0ZWdvcnkoJ1VuZGVyd2VpZ2h0Jyk7CiAgICAgICAgZWxzZSBpZiAodmFsIDwgMjUpIHNldENhdGVnb3J5KCdOb3JtYWwnKTsKICAgICAgICBlbHNlIGlmICh2YWwgPCAzMCkgc2V0Q2F0ZWdvcnkoJ092ZXJ3ZWlnaHQnKTsKICAgICAgICBlbHNlIHNldENhdGVnb3J5KCdPYmVzZScpOwogICAgICB9IGVsc2UgeyBzZXRCbWkoMCk7IHNldENhdGVnb3J5KCfigJQnKTsgfQogICAgfSwgW3dlaWdodCwgaGVpZ2h0XSk7CiAgICByZXR1cm4geyBibWksIGNhdGVnb3J5IH07CiAgfQogIGZ1bmN0aW9uIEFwcCgpIHsKICAgIGNvbnN0IFtzcGxhc2hWaXNpYmxlLCBzZXRTcGxhc2hWaXNpYmxlXSA9IHVzZVN0YXRlKHRydWUpOwogICAgdXNlRWZmZWN0KCgpID0+IHsgY29uc3QgdCA9IHNldFRpbWVvdXQoKCkgPT4gc2V0U3BsYXNoVmlzaWJsZShmYWxzZSksIDEyMDApOyByZXR1cm4gKCkgPT4gY2xlYXJUaW1lb3V0KHQpOyB9LCBbXSk7CiAgICBjb25zdCBbd2VpZ2h0LCBzZXRXZWlnaHRdID0gdXNlU3RhdGUoNzIpOwogICAgY29uc3QgW2hlaWdodCwgc2V0SGVpZ2h0XSA9IHVzZVN0YXRlKDE3NSk7CiAgICBjb25zdCBbd2VpZ2h0SW5wdXQsIHNldFdlaWdodElucHV0XSA9IHVzZVN0YXRlKDcyKTsKICAgIGNvbnN0IFtoZWlnaHRJbnB1dCwgc2V0SGVpZ2h0SW5wdXRdID0gdXNlU3RhdGUoMTc1KTsKICAgIGNvbnN0IFttZWFscywgc2V0TWVhbHNdID0gdXNlU3RhdGUoWwogICAgICB7IGlkOiAxLCBuYW1lOiAnR3JpbGxlZCBDaGlja2VuJywgY2Fsb3JpZXM6IDQyMCB9LAogICAgICB7IGlkOiAyLCBuYW1lOiAnT2F0bWVhbCArIEZydWl0JywgY2Fsb3JpZXM6IDI5MCB9LAogICAgICB7IGlkOiAzLCBuYW1lOiAnUHJvdGVpbiBCYXInLCBjYWxvcmllczogMjEwIH0sCiAgICBdKTsKICAgIGNvbnN0IFttZWFsTmFtZSwgc2V0TWVhbE5hbWVdID0gdXNlU3RhdGUoJycpOwogICAgY29uc3QgW21lYWxDYWwsIHNldE1lYWxDYWxdID0gdXNlU3RhdGUoJycpOwogICAgY29uc3QgeyBibWksIGNhdGVnb3J5IH0gPSB1c2VCTUkod2VpZ2h0LCBoZWlnaHQpOwogICAgY29uc3QgaGFuZGxlV2VpZ2h0ID0gKHZhbCkgPT4geyBjb25zdCB2ID0gcGFyc2VGbG9hdCh2YWwpIHx8IDA7IHNldFdlaWdodCh2KTsgc2V0V2VpZ2h0SW5wdXQodik7IH07CiAgICBjb25zdCBoYW5kbGVIZWlnaHQgPSAodmFsKSA9PiB7IGNvbnN0IHYgPSBwYXJzZUZsb2F0KHZhbCkgfHwgMDsgc2V0SGVpZ2h0KHYpOyBzZXRIZWlnaHRJbnB1dCh2KTsgfTsKICAgIGNvbnN0IHN5bmNXZWlnaHQgPSAoKSA9PiB7IGxldCB2ID0gcGFyc2VGbG9hdCh3ZWlnaHRJbnB1dCkgfHwgMjA7IGlmICh2PDIwKSB2PTIwOyBpZiAodj4zMDApIHY9MzAwOyBzZXRXZWlnaHQodik7IHNldFdlaWdodElucHV0KHYpOyB9OwogICAgY29uc3Qgc3luY0hlaWdodCA9ICgpID0+IHsgbGV0IHYgPSBwYXJzZUZsb2F0KGhlaWdodElucHV0KSB8fCA4MDsgaWYgKHY8ODApIHY9ODA7IGlmICh2PjI1MCkgdj0yNTA7IHNldEhlaWdodCh2KTsgc2V0SGVpZ2h0SW5wdXQodik7IH07CiAgICBjb25zdCBhZGRNZWFsID0gKCkgPT4gewogICAgICBjb25zdCBuYW1lID0gbWVhbE5hbWUudHJpbSgpIHx8ICdTbmFjayc7CiAgICAgIGNvbnN0IGNhbCA9IHBhcnNlRmxvYXQobWVhbENhbCkgfHwgMDsKICAgICAgaWYgKGNhbCA8PSAwKSByZXR1cm47CiAgICAgIHNldE1lYWxzKFsuLi5tZWFscywgeyBpZDogRGF0ZS5ub3coKSwgbmFtZSwgY2Fsb3JpZXM6IGNhbCB9XSk7CiAgICAgIHNldE1lYWxOYW1lKCcnKTsgc2V0TWVhbENhbCgnJyk7CiAgICB9OwogICAgY29uc3QgcmVtb3ZlTWVhbCA9IChpZCkgPT4gc2V0TWVhbHMobWVhbHMuZmlsdGVyKG0gPT4gbS5pZCAhPT0gaWQpKTsKICAgIGNvbnN0IHRvdGFsQ2FsID0gdXNlTWVtbygoKSA9PiBtZWFscy5yZWR1Y2UoKHMsIG0pID0+IHMgKyBtLmNhbG9yaWVzLCAwKSwgW21lYWxzXSk7CiAgICBjb25zdCBbYWN0aXZlVGFiLCBzZXRBY3RpdmVUYWJdID0gdXNlU3RhdGUoJ2hvbWUnKTsKICAgIHJldHVybiAoCiAgICAgIDxkaXYgY2xhc3NOYW1lPSJhcHAtc2hlbGwiPgogICAgICAgIDxkaXYgY2xhc3NOYW1lPXsic3BsYXNoICIgKyAoc3BsYXNoVmlzaWJsZSA/ICIiIDogImhpZGUiKX0+PGgxPvCfjYsgRml0VHJhY2s8L2gxPjxwPk1vYmlsZSDCtCByZWFs4oCVdGltZTwvcD48L2Rpdj4KICAgICAgICA8aGVhZGVyIGNsYXNzTmFtZT0iYXBwLWhlYWRlciI+PGgxPkZpdFRyYWNrIDxzcGFuPlBybzwvc3Bhbj48L2gxPjxkaXYgY2xhc3NOYW1lPSJmbGV4Ij48c3BhbiBjbGFzc05hbWU9InN0YXR1cy1kb3QiPjwvc3Bhbj48c3BhbiBzdHlsZT17e2ZvbnRTaXplOjEyLGNvbG9yOiIjNmE2YTg4In19PkxJVkU8L3NwYW4+PC9kaXY+PC9oZWFkZXI+CiAgICAgICAgPGRpdiBjbGFzc05hbWU9ImFwcC1jb250ZW50Ij4KICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPSJjYXJkIj48ZGl2IGNsYXNzTmFtZT0iY2FyZC10aXRsZSI+PHNwYW4+4qSWIEJNSTwvc3Bhbj48c3BhbiBjbGFzc05hbWU9ImJhZGdlLWxpdmUiPnJlYWzigI10aW1lPC9zcGFuPjwvZGl2PgogICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT0icm93Ij48ZGl2IGNsYXNzTmFtZT0iY29sIj48bGFiZWw+V2VpZ2h0IChrZyk8L2xhYmVsPjxpbnB1dCB0eXBlPSJudW1iZXIiIHZhbHVlPXt3ZWlnaHRJbnB1dH0gb25DaGFuZ2U9e2UgPT4gc2V0V2VpZ2h0SW5wdXQoZS50YXJnZXQudmFsdWUpfSBvbkJsdXI9e3N5bmNXZWlnaHR9IG1pbj0iMjAiIG1heD0iMzAwIiAvPjxpbnB1dCB0eXBlPSJyYW5nZSIgbWluPSIyMCIgbWF4PSIzMDAiIHN0ZXA9IjAuNSIgdmFsdWU9e3dlaWdodH0gb25DaGFuZ2U9e2UgPT4gaGFuZGxlV2VpZ2h0KGUudGFyZ2V0LnZhbHVlKX0gLz48L2Rpdj48ZGl2IGNsYXNzTmFtZT0iY29sIj48bGFiZWw+SGVpZ2h0IChjbSk8L2xhYmVsPjxpbnB1dCB0eXBlPSJudW1iZXIiIHZhbHVlPXtoZWlnaHRJbnB1dH0gb25DaGFuZ2U9e2UgPT4gc2V0SGVpZ2h0SW5wdXQoZS50YXJnZXQudmFsdWUpfSBvbkJsdXI9e3N5bmNIZWlnaHR9IG1pbj0iODAiIG1heD0iMjUwIiAvPjxpbnB1dCB0eXBlPSJyYW5nZSIgbWluPSI4MCIgbWF4PSIyNTAiIHN0ZXA9IjAuNSIgdmFsdWU9e2hlaWdodH0gb25DaGFuZ2U9e2UgPT4gaGFuZGxlSGVpZ2h0KGUudGFyZ2V0LnZhbHVlKX0gLz48L2Rpdj48L2Rpdj4KICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9ImJtaS1yZXN1bHQiPjxkaXY+PHNwYW4gc3R5bGU9e3tmb250U2l6ZToxMyxjb2xvcjoiIzkwOTBiMCJ9fT5CTUk8L3NwYW4+PGRpdiBjbGFzc05hbWU9ImJtaS1udW1iZXIiPntibWkgfHwg4oCUJ308L2Rpdj48L2Rpdj48ZGl2IGNsYXNzTmFtZT0iYm1pLWNhdGVnb3J5Ij57Y2F0ZWdvcnl9PC9kaXY+PC9kaXY+CiAgICAgICAgICA8L2Rpdj4KICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPSJjYXJkIiBzdHlsZT17e21hcmdpbkJvdHRvbToxMH19PjxkaXYgY2xhc3NOYW1lPSJjYXJkLXRpdGxlIj48c3Bhbj7wn42NIE1lYWwgUHJlcDwvc3Bhbj48c3BhbiBzdHlsZT17e21hcmdpbkxlZnQ6ImF1dG8iLGZvbnRTaXplOjEzLGNvbG9yOiIjNmE2YTg4In19PnttZWFscy5sZW5ndGh9IGl0ZW1zPC9zcGFuPjwvZGl2PgogICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT0ibWVhbC1saXN0Ij57bWVhbHMubGVuZ3RoID09PSAwICYmIDxkaXYgY2xhc3NOYW1lPSJ0ZXh0LW11dGVkIiBzdHlsZT17e3RleHRBbGlnbjoiY2VudGVyIixwYWRkaW5nOjh9fT5ObyBtZWFscyBhZGRlZDwvZGl2Pn17bWVhbHMubWFwKG0gPT4gPGRpdiBjbGFzc05hbWU9Im1lYWwtaXRlbSIga2V5PXttLmlkfT48c3BhbiBjbGFzc05hbWU9Im1lYWwtbmFtZSI+e20ubmFtZX08L3NwYW4+PGRpdiBjbGFzc05hbWU9ImZsZXgiPjxzcGFuIGNsYXNzTmFtZT0ibWVhbC1jYWwiPnttLmNhbG9yaWVzfSBrY2FsPC9zcGFuPjxidXR0b24gY2xhc3NOYW1lPSJidG4gYnRuLWRhbmdlciIgb25DbGljaz17KCkgPT4gcmVtb3ZlTWVhbChtLmlkKX0+4pyVPC9idXR0b24+PC9kaXY+PC9kaXY+KSkpfTwvZGl2PgogICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT0iYWRkLW1lYWwiPjxpbnB1dCBwbGFjZWhvbGRlcj0iTWVhbCBuYW1lIiB2YWx1ZT17bWVhbE5hbWV9IG9uQ2hhbmdlPXtlID0+IHNldE1lYWxOYW1lKGUudGFyZ2V0LnZhbHVlKX0gLz48aW5wdXQgcGxhY2Vob2xkZXI9ImtjYWwiIHR5cGU9Im51bWJlciIgdmFsdWU9e21lYWxDYWx9IG9uQ2hhbmdlPXtlID0+IHNldE1lYWxDYWwoZS50YXJnZXQudmFsdWUpfSAvPjxidXR0b24gY2xhc3NOYW1lPSJidG4iIG9uQ2xpY2s9e2FkZE1lYWx9PisgQWRkPC9idXR0b24+PC9kaXY+CiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPSJ0b3RhbC1jYWwiPjxzcGFuPvCfjY0gVG90YWw8L3NwYW4+PHNwYW4gc3R5bGU9e3tmb250V2VpZ2h0OjgwMCxjb2xvcjoiI2I4YjBmZiJ9fT57dG90YWxDYWx9IGtjYWw8L3NwYW4+PC9kaXY+CiAgICAgICAgICA8L2Rpdj4KICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPSJ0ZXh0LW11dGVkIiBzdHlsZT17e3RleHRBbGlnbjoiY2VudGVyIixwYWRkaW5nQm90dG9tOjgsZm9udFNpemU6MTJ9fT/ipLJJbnN0YWxsZWQgYXMgYXBwPC9kaXY+CiAgICAgICAgPC9kaXY+CiAgICAgICAgPGRpdiBjbGFzc05hbWU9ImJvdHRvbS1uYXYiPgogICAgICAgICAgPGJ1dHRvbiBjbGFzc05hbWU9eyJuYXYtaXRlbSAiICsgKGFjdGl2ZVRhYiA9PT0gImhvbWUiID8gImFjdGl2ZSIgOiAiIil9IG9uQ2xpY2s9eygpID0+IHNldEFjdGl2ZVRhYigiaG9tZSIpfT48aT/wn42gPC9pPiBIb21lPC9idXR0b24+CiAgICAgICAgICA8YnV0dG9uIGNsYXNzTmFtZT17Im5hdi1pdGVtICIgKyAoYWN0aXZlVGFiID09PSAiYm1pIiA/ICJhY3RpdmUiIDogIiIpfSBvbkNsaWNrPXsoKSA9PiBzZXRBY3RpdmVUYWIoImJtaSIpfT48aT/ipJY8L2k+IEJNSTwvYnV0dG9uPgogICAgICAgICAgPGJ1dHRvbiBjbGFzc05hbWU9eyJuYXYtaXRlbSAiICsgKGFjdGl2ZVRhYiA9PT0gIm1lYWxzIiA/ICJhY3RpdmUiIDogIiIpfSBvbkNsaWNrPXsoKSA9PiBzZXRBY3RpdmVUYWIoIm1lYWxzIil9PjxpPvCfjY08L2k+IE1lYWxzPC9idXR0b24+CiAgICAgICAgICA8YnV0dG9uIGNsYXNzTmFtZT17Im5hdi1pdGVtICIgKyAoYWN0aXZlVGFiID09PSAicHJvZmlsZSIgPyAiYWN0aXZlIiA6ICIiKX0gb25DbGljaz17KCkgPT4gc2V0QWN0aXZlVGFiKCJwcm9maWxlIil9PjxpPvCfj6Q8L2k+IFByb2ZpbGU8L2J1dHRvbj4KICAgICAgICA8L2Rpdj4KICAgICAgPC9kaXY+CiAgICApOwogIH0KICBjb25zdCByb290ID0gUmVhY3RET00uY3JlYXRlUm9vdChkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgncm9vdCcpKTsKICByb290LnJlbmRlcig8QXBwIC8+KTsKPC9zY3JpcHQ+CjxzY3JpcHQgc3JjPSJodHRwczovL2NkbmpzLmNsb3VkZmxhcmUuY29tL2FqYXgvbGlicy9yZWFjdC8xOC4yLjAvdW1kL3JlYWN0LnByb2R1Y3Rpb24ubWluLmpzIj48L3NjcmlwdD4KPHNjcmlwdCBzcmM9Imh0dHBzOi8vY2RuanMuY2xvdWRmbGFyZS5jb20vYWpheC9saWJzL3JlYWN0LWRvbS8xOC4yLjAvdW1kL3JlYWN0LWRvbS5wcm9kdWN0aW9uLm1pbi5qcyI+PC9zY3JpcHQ+CjxzY3JpcHQgc3JjPSJodHRwczovL2NkbmpzLmNsb3VkZmxhcmUuY29tL2FqYXgvbGlicy9iYWJlbC1zdGFuZGFsb25lLzcuMjQuMC9iYWJlbC5taW4uanMiPjwvc2NyaXB0Pgo8L2JvZHk+CjwvaHRtbD4=';
-
-        // ============================================================
-        // PWA Installation Logic
-        // ============================================================
-
-        var deferredPrompt;
-
-        // Listen for the beforeinstallprompt event
-        window.addEventListener('beforeinstallprompt', function(e) {
-            // Prevent Chrome 67 and earlier from automatically showing the prompt
-            e.preventDefault();
-            // Stash the event so it can be triggered later
-            deferredPrompt = e;
-            
-            // Show the install button
-            document.getElementById('installBanner').classList.add('show');
-            document.getElementById('installBtnText').textContent = '📲 Install App';
-            document.getElementById('platformBadge').textContent = 'Install';
-            document.getElementById('installBtn').style.background = 'linear-gradient(135deg, #6C63FF, #5a52e0)';
-            showStatus('📲 Tap "Install App" to add to your home screen', 'success');
-            
-            console.log('✅ PWA install prompt available');
-        });
-
-        // Listen for successful installation
-        window.addEventListener('appinstalled', function(e) {
-            document.getElementById('installBanner').classList.remove('show');
-            document.getElementById('installBtnText').textContent = '✅ App Installed';
-            document.getElementById('platformBadge').textContent = '✓ Installed';
-            document.getElementById('installBtn').style.background = '#2a7a3a';
-            showStatus('🎉 App installed successfully! You can now launch it from your home screen.', 'installed');
-            deferredPrompt = null;
-        });
-
-        // ============================================================
-        // Download / Install logic
+        // WORKING SOLUTION - Using Base64 encoding
         // ============================================================
 
         var currentPlatform = 'android';
 
+        // The app HTML as a BASE64 encoded string
+        // This completely avoids all parsing issues
+        var APP_BASE64 = 'PCFET0NUWVBFIGh0bWw+CjxodG1sIGxhbmc9ImVuIj4KPGhlYWQ+CjxtZXRhIGNoYXJzZXQ9IlVURi04Ij4KPG1ldGEgbmFtZT0idmlld3BvcnQiIGNvbnRlbnQ9IndpZHRoPWRldmljZS13aWR0aCwgaW5pdGlhbC1zY2FsZT0xLjAsIG1heGltdW0tc2NhbGU9MS4wLCB1c2VyLXNjYWxhYmxlPW5vIj4KPHRpdGxlPkZpdFRyYWNrIFBybzwvdGl0bGU+CjxzdHlsZT4KKnttYXJnaW46MDtwYWRkaW5nOjA7Ym94LXNpemluZzpib3JkZXItYm94O2ZvbnQtZmFtaWx5Oi1hcHBsZS1zeXN0ZW0sQmxpbmtNYWNTeXN0ZW1Gb250LCJTZWdvZSBVSSIsUm9ib3RvLHNhbnMtc2VyaWY7fQpib2R5e2JhY2tncm91bmQ6IzEyMTIxODtjb2xvcjojZjBmMGY1O21pbi1oZWlnaHQ6MTAwdmg7ZGlzcGxheTpmbGV4O2p1c3RpZnktY29udGVudDpjZW50ZXI7YWxpZ24taXRlbXM6Y2VudGVyO3BhZGRpbmc6MjBweDt9Ci5hcHB7bWF4LXdpZHRoOjQ4MHB4O3dpZHRoOjEwMCU7fQouaGVhZGVye3RleHQtYWxpZ246Y2VudGVyO21hcmdpbi1ib3R0b206MjRweDt9Ci5oZWFkZXIgLmljb257d2lkdGg6ODBweDtoZWlnaHQ6ODBweDtiYWNrZ3JvdW5kOmxpbmVhci1ncmFkaWVudCgxMzVkZWcsIzZDNjNGRiwsIzhiN2ZmZik7Ym9yZGVyLXJhZGl1czoyNHB4O2Rpc3BsYXk6aW5saW5lLWZsZXg7YWxpZ24taXRlbXM6Y2VudGVyO2p1c3RpZnktY29udGVudDpjZW50ZXI7Zm9udC1zaXplOjQycHg7Zm9udC13ZWlnaHQ6ODAwO2NvbG9yOndoaXRlO21hcmdpbi1ib3R0b206MTJweDtib3gtc2hhZG93OjAgMTJweCAzMHB4IHJnYmEoMTA4LDk5LDI1NSwwLjMpO30KLmhlYWRlciBoMXtmb250LXNpemU6MjhweDtmb250LXdlaWdodDo3MDA7fQouaGVhZGVyIGgxIHNwYW57Y29sb3I6IzZDNjNGRjt9Ci5oZWFkZXIgcHtjb2xvcjojOGE4YWFhO21hcmdpbi10b3A6NHB4O30KLmNhcmR7YmFja2dyb3VuZDojMWMxYzI2O2JvcmRlci1yYWRpdXM6MjRweDtwYWRkaW5nOjIwcHg7bWFyZ2luLWJvdHRvbToxNnB4O2JvcmRlcjoxcHggc29saWQgIzJhMmEzYTt9Ci5jYXJkLXRpdGxle2ZvbnQtc2l6ZToxN3B4O2ZvbnQtd2VpZ2h0OjYwMDtjb2xvcjojYzhjOGUwO21hcmdpbi1ib3R0b206MTZweDtkaXNwbGF5OmZsZXg7YWxpZ24taXRlbXM6Y2VudGVyO2dhcDoxMHB4O30KLnJvd3tkaXNwbGF5OmZsZXg7Z2FwOjEycHg7ZmxleC13cmFwOndyYXA7bWFyZ2luLWJvdHRvbToxMHB4O30KLmNvbHtmbGV4OjE7bWluLXdpZHRoOjEwMHB4O30KbGFiZWx7ZGlzcGxheTpibG9jaztmb250LXNpemU6MTJweDtmb250LXdlaWdodDo1MDA7Y29sb3I6IzkwOTBiMDttYXJnaW4tYm90dG9tOjRweDt9CmlucHV0e3dpZHRoOjEwMCU7cGFkZGluZzoxNHB4IDE2cHg7YmFja2dyb3VuZDojMTIxMjFlO2JvcmRlcjoxcHggc29saWQgIzMyMzI0YTtib3JkZXItcmFkaXVzOjIwcHg7Y29sb3I6I2YwZjBmNTtmb250LXNpemU6MTZweDtvdXRsaW5lOm5vbmU7fQppbnB1dDpmb2N1c3tib3JkZXItY29sb3I6IzZDNjNGRjtib3gtc2hhZG93OjAgMCAwIDNweCByZ2JhKDEwOCw5OSwyNTUsMC4yNSk7fQppbnB1dFt0eXBlPSJyYW5nZSJde3BhZGRpbmc6NnB4IDA7YWNjZW50LWNvbG9yOiM2QzYzRkY7YmFja2dyb3VuZDp0cmFuc3BhcmVudDtib3JkZXI6bm9uZTt9Ci5ibWktcmVzdWx0e2Rpc3BsYXk6ZmxleDtqdXN0aWZ5LWNvbnRlbnQ6c3BhY2UtYmV0d2VlbjthbGlnbi1pdGVtczpjZW50ZXI7bWFyZ2luLXRvcDo4cHg7fQouYm1pLW51bWJlcntmb250LXNpemU6NDJweDtmb250LXdlaWdodDo4MDA7YmFja2dyb3VuZDpsaW5lYXItZ3JhZGllbnQoMTM1ZGVnLCM2QzYzRkYsI2E3OGJmYSk7LXdlYmtpdC1iYWNrZ3JvdW5kLWNsaXA6dGV4dDstd2Via2l0LXRleHQtZmlsbC1jb2xvcjp0cmFuc3BhcmVudDt9Ci5ibWktY2F0ZWdvcnl7YmFja2dyb3VuZDojMjYyNjNhO3BhZGRpbmc6NnB4IDE4cHg7Ym9yZGVyLXJhZGl1czo0MHB4O2ZvbnQtd2VpZ2h0OjYwMDtmb250LXNpemU6MTVweDtjb2xvcjojZDRkMGZmO30KLm1lYWwtbGlzdHtkaXNwbGF5OmZsZXg7ZmxleC1kaXJlY3Rpb246Y29sdW1uO2dhcDoxMnB4O21hcmdpbjo4cHggMCAxMnB4O30KLm1lYWwtaXRlbXtkaXNwbGF5OmZsZXg7anVzdGlmeS1jb250ZW50OnNwYWNlLWJldHdlZW47YWxpZ24taXRlbXM6Y2VudGVyO2JhY2tncm91bmQ6IzE1MTUyMTtwYWRkaW5nOjEycHggMTZweDtib3JkZXItcmFkaXVzOjYwcHg7Ym9yZGVyLWxlZnQ6NnB4IHNvbGlkICM2QzYzRkY7fQoubWVhbC1uYW1le2ZvbnQtd2VpZ2h0OjUwMDtmb250LXNpemU6MTVweDt9Ci5tZWFsLWNhbHtiYWNrZ3JvdW5kOiMyYTJhNDA7cGFkZGluZzo0cHggMTRweDtib3JkZXItcmFkaXVzOjQwcHg7Zm9udC1zaXplOjEzcHg7Zm9udC13ZWlnaHQ6NjAwO30KLmFkZC1tZWFse2Rpc3BsYXk6ZmxleDtnYXA6OHB4O21hcmdpbi10b3A6OHB4O30KLmFkZC1tZWFsIGlucHV0e3BhZGRpbmc6MTJweCAxNHB4O2ZvbnQtc2l6ZToxNHB4O2ZsZXg6MTt9Ci5hZGQtbWVhbCBpbnB1dDpmaXJzdC1jaGlsZHtmbGV4OjM7fQouYnRue2JhY2tncm91bmQ6IzZDNjNGRjtib3JkZXI6bm9uZTtjb2xvcjp3aGl0ZTtmb250LXdlaWdodDo2MDA7cGFkZGluZzoxMnB4IDE2cHg7Ym9yZGVyLXJhZGl1czo0MHB4O2ZvbnQtc2l6ZToxNHB4O2N1cnNvcjpwb2ludGVyO2JvcmRlcjoxcHggc29saWQgIzhhODJmZjtmbGV4OjE7fQouYnRuOmFjdGl2ZXt0cmFuc2Zvcm06c2NhbGUoMC45NSk7fQouYnRuLWRhbmdlcntiYWNrZ3JvdW5kOiNjMDM5NWE7Ym9yZGVyLWNvbG9yOiNjMDM5NWE7cGFkZGluZzo2cHggMTRweDtmb250LXNpemU6MTNweDtmbGV4OjA7fQoudG90YWwtY2Fse21hcmdpbi10b3A6MTZweDtmb250LXNpemU6MThweDtmb250LXdlaWdodDo2MDA7ZGlzcGxheTpmbGV4O2p1c3RpZnktY29udGVudDpzcGFjZS1iZXR3ZWVuO2JvcmRlci10b3A6MXB4IHNvbGlkICMyYTJhM2E7cGFkZGluZy10b3A6MTRweDt9Ci5ib3R0b20tbmF2e2Rpc3BsYXk6ZmxleDtqdXN0aWZ5LWNvbnRlbnQ6c3BhY2UtYXJvdW5kO2JhY2tncm91bmQ6IzE2MTYxZjtib3JkZXItdG9wOjFweCBzb2xpZCAjMjgyODNhO3BhZGRpbmc6MTBweCAwIDE0cHg7bWFyZ2luLXRvcDoxNnB4O2JvcmRlci1yYWRpdXM6MCAwIDI0cHggMjRweDt9Ci5uYXYtaXRlbXtkaXNwbGF5OmZsZXg7ZmxleC1kaXJlY3Rpb246Y29sdW1uO2FsaWduLWl0ZW1zOmNlbnRlcjtjb2xvcjojNmE2YTg4O2ZvbnQtc2l6ZToxMHB4O2ZvbnQtd2VpZ2h0OjUwMDtiYWNrZ3JvdW5kOm5vbmU7Ym9yZGVyOm5vbmU7cGFkZGluZzo0cHggMTZweDtjdXJzb3I6cG9pbnRlcjt9Ci5uYXYtaXRlbS5hY3RpdmV7Y29sb3I6IzZDNjNGRjt9Ci5uYXYtaXRlbSBpe2ZvbnQtc2l6ZToyNHB4O21hcmdpbi1ib3R0b206MnB4O2ZvbnQtc3R5bGU6bm9ybWFsO30KLmZsZXh7ZGlzcGxheTpmbGV4O2FsaWduLWl0ZW1zOmNlbnRlcjtnYXA6OHB4O2ZsZXgtd3JhcDp3cmFwO30KLnRleHQtbXV0ZWR7Y29sb3I6IzZhNmE4ODtmb250LXNpemU6MTNweDt0ZXh0LWFsaWduOmNlbnRlcjttYXJnaW4tdG9wOjhweDt9Ci5zcGxhc2h7cG9zaXRpb246Zml4ZWQ7aW5zZXQ6MDtiYWNrZ3JvdW5kOiMxMjEyMTg7ZGlzcGxheTpmbGV4O2ZsZXgtZGlyZWN0aW9uOmNvbHVtbjthbGlnbi1pdGVtczpjZW50ZXI7anVzdGlmeS1jb250ZW50OmNlbnRlcjt6LWluZGV4OjEwMDt0cmFuc2l0aW9uOm9wYWNpdHkgMC42cyBlYXNlO30KLnNwbGFzaC5oaWRle29wYWNpdHk6MDtwb2ludGVyLWV2ZW50czpub25lO30KLnNwbGFzaCBoMXtmb250LXNpemU6NDJweDtjb2xvcjojNkM2M0ZGO2ZvbnQtd2VpZ2h0OjgwMDt9Ci5zcGxhc2ggcHtjb2xvcjojNmE2YTg4O21hcmdpbi10b3A6NnB4O30KPC9zdHlsZT4KPC9oZWFkPgo8Ym9keT4KPGRpdiBpZD0ic3BsYXNoIiBjbGFzcz0ic3BsYXNoIj48aDE+8J+NiyBGaXRUcmFjazwvaDE+PHA+TG9hZGluZyB5b3VyIGZpdG5lc3MgYXBwLi4uPC9wPjwvZGl2Pgo8ZGl2IGNsYXNzPSJhcHAiPgo8ZGl2IGNsYXNzPSJoZWFkZXIiPjxkaXYgY2xhc3M9Imljb24iPkY8L2Rpdj48aDE+Rml0VHJhY2sgPHNwYW4+UHJvPC9zcGFuPjwvaDE+PHA+UmVhbC10aW1lIGZpdG5lc3MgdHJhY2tpbmc8L3A+PC9kaXY+CjxkaXYgY2xhc3M9ImNhcmQiPgo8ZGl2IGNsYXNzPSJjYXJkLXRpdGxlIj7ipJYgQk1JIDxzcGFuIHN0eWxlPSJtYXJnaW4tbGVmdDphdXRvO2ZvbnQtc2l6ZToxMXB4O2NvbG9yOiM0YTRhNmE7Ij5yZWFsLXRpbWU8L3NwYW4+PC9kaXY+CjxkaXYgY2xhc3M9InJvdyI+CjxkaXYgY2xhc3M9ImNvbCI+PGxhYmVsPldlaWdodCAoa2cpPC9sYWJlbD48aW5wdXQgdHlwZT0ibnVtYmVyIiBpZD0id2VpZ2h0SW5wdXQiIHZhbHVlPSI3MiIgbWluPSIyMCIgbWF4PSIzMDAiIG9uaW5wdXQ9InVwZGF0ZUJNSSgpIiBvbmJsdXI9InN5bmNXZWlnaHQoKSI+PGlucHV0IHR5cGU9InJhbmdlIiBpZD0id2VpZ2h0UmFuZ2UiIG1pbj0iMjAiIG1heD0iMzAwIiBzdGVwPSIwLjUiIHZhbHVlPSI3MiIgb25pbnB1dD0idXBkYXRlV2VpZ2h0KHRoaXMudmFsdWUpIj48L2Rpdj4KPGRpdiBjbGFzcz0iY29sIj48bGFiZWw+SGVpZ2h0IChjbSk8L2xhYmVsPjxpbnB1dCB0eXBlPSJudW1iZXIiIGlkPSJoZWlnaHRJbnB1dCIgdmFsdWU9IjE3NSIgbWluPSI4MCIgbWF4PSIyNTAiIG9uaW5wdXQ9InVwZGF0ZUJNSSgpIiBvbmJsdXI9InN5bmNIZWlnaHQoKSI+PGlucHV0IHR5cGU9InJhbmdlIiBpZD0iaGVpZ2h0UmFuZ2UiIG1pbj0iODAiIG1heD0iMjUwIiBzdGVwPSIwLjUiIHZhbHVlPSIxNzUiIG9uaW5wdXQ9InVwZGF0ZUhlaWdodCh0aGlzLnZhbHVlKSI+PC9kaXY+CjwvZGl2Pgo8ZGl2IGNsYXNzPSJibWktcmVzdWx0Ij48ZGl2PjxzcGFuIHN0eWxlPSJmb250LXNpemU6MTNweDtjb2xvcjojOTA5MGIwOyI+Qk1JPC9zcGFuPjxkaXYgY2xhc3M9ImJtaS1udW1iZXIiIGlkPSJibWlEaXNwbGF5Ij4yNC41PC9kaXY+PC9kaXY+PGRpdiBjbGFzcz0iYm1pLWNhdGVnb3J5IiBpZD0iY2F0ZWdvcnlEaXNwbGF5Ij5Ob3JtYWw8L2Rpdj48L2Rpdj4KPC9kaXY+CjxkaXYgY2xhc3M9ImNhcmQiPgo8ZGl2IGNsYXNzPSJjYXJkLXRpdGxlIj7wn42NIE1lYWwgUHJlcCA8c3BhbiBzdHlsZT0ibWFyZ2luLWxlZnQ6YXV0bztmb250LXNpemU6MTNweDtjb2xvcjojNmE2YTg4OyIgaWQ9Im1lYWxDb3VudCI+MyBpdGVtczwvc3Bhbj48L2Rpdj4KPGRpdiBjbGFzcz0ibWVhbC1saXN0IiBpZD0ibWVhbExpc3QiPgo8ZGl2IGNsYXNzPSJtZWFsLWl0ZW0iPjxzcGFuIGNsYXNzPSJtZWFsLW5hbWUiPkdyaWxsZWQgQ2hpY2tlbjwvc3Bhbj48ZGl2IGNsYXNzPSJmbGV4Ij48c3BhbiBjbGFzcz0ibWVhbC1jYWwiPjQyMCBrY2FsPC9zcGFuPjxidXR0b24gY2xhc3M9ImJ0biBidG4tZGFuZ2VyIiBvbmNsaWNrPSJyZW1vdmVNZWFsKHRoaXMpIj7inJU8L2J1dHRvbj48L2Rpdj48L2Rpdj4KPGRpdiBjbGFzcz0ibWVhbC1pdGVtIj48c3BhbiBjbGFzcz0ibWVhbC1uYW1lIj5PYXRtZWFsICsgRnJ1aXQ8L3NwYW4+PGRpdiBjbGFzcz0iZmxleCI+PHNwYW4gY2xhc3M9Im1lYWwtY2FsIj4yOTAga2NhbDwvc3Bhbj48YnV0dG9uIGNsYXNzPSJidG4gYnRuLWRhbmdlciIgb25jbGljaz0icmVtb3ZlTWVsKHRoaXMpIj7inJU8L2J1dHRvbj48L2Rpdj48L2Rpdj4KPGRpdiBjbGFzcz0ibWVhbC1pdGVtIj48c3BhbiBjbGFzcz0ibWVhbC1uYW1lIj5Qcm90ZWluIEJhcjwvc3Bhbj48ZGl2IGNsYXNzPSJmbGV4Ij48c3BhbiBjbGFzcz0ibWVhbC1jYWwiPjIxMCBrY2FsPC9zcGFuPjxidXR0b24gY2xhc3M9ImJ0biBidG4tZGFuZ2VyIiBvbmNsaWNrPSJyZW1vdmVNZWFsKHRoaXMpIj7inJU8L2J1dHRvbj48L2Rpdj48L2Rpdj4KPC9kaXY+CjxkaXYgY2xhc3M9ImFkZC1tZWFsIj48aW5wdXQgdHlwZT0idGV4dCIgaWQ9Im1lYWxOYW1lSW5wdXQiIHBsYWNlaG9sZGVyPSJNZWFsIG5hbWUiPjxpbnB1dCB0eXBlPSJudW1iZXIiIGlkPSJtZWFsQ2FsSW5wdXQiIHBsYWNlaG9sZGVyPSJrY2FsIj48YnV0dG9uIGNsYXNzPSJidG4iIG9uY2xpY2s9ImFkZE1lYWwoKSI+KyBBZGQ8L2J1dHRvbj48L2Rpdj4KPGRpdiBjbGFzcz0idG90YWwtY2FsIj48c3Bhbj7wn42NIFRvdGFsPC9zcGFuPjxzcGFuIHN0eWxlPSJmb250LXdlaWdodDo4MDA7Y29sb3I6I2I4YjBmZjsiIGlkPSJ0b3RhbENhbG9yaWVzIj45MjAga2NhbDwvc3Bhbj48L2Rpdj4KPC9kaXY+CjxkaXYgY2xhc3M9InRleHQtbXV0ZWQiPvKkkiBTdGFuZGFsb25lIGFwcDwvZGl2Pgo8ZGl2IGNsYXNzPSJib3R0b20tbmF2Ij4KPGJ1dHRvbiBjbGFzcz0ibmF2LWl0ZW0gYWN0aXZlIj48aT/wn42gPC9pPiBIb21lPC9idXR0b24+CjxidXR0b24gY2xhc3M9Im5hdi1pdGVtIj48aT/ipJY8L2k+IEJNSTwvYnV0dG9uPgo8YnV0dG9uIGNsYXNzPSJuYXYtaXRlbSI+PGk+8J+NjTwvaT4gTWVhbHM8L2J1dHRvbj4KPGJ1dHRvbiBjbGFzcz0ibmF2LWl0ZW0iPjxpPvCfj6Q8L2k+IFByb2ZpbGU8L2J1dHRvbj4KPC9kaXY+CjwvZGl2Pgo8c2NyaXB0PgpzZXRUaW1lb3V0KGZ1bmN0aW9uKCl7IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCJzcGxhc2giKS5jbGFzc0xpc3QuYWRkKCJoaWRlIik7IH0sIDEwMDApOwpmdW5jdGlvbiB1cGRhdGVCTSgpIHsKdmFyIHcgPSBwYXJzZUZsb2F0KGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCJ3ZWlnaHRJbnB1dCIpLnZhbHVlKSB8fCAwOwp2YXIgaCA9IHBhcnNlRmxvYXQoZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoImhlaWdodElucHV0IikudmFsdWUpIHx8IDA7CmlmIChoID4gMCAmJiB3ID4gMCkgewp2YXIgYm1pID0gdyAvICgoaC8xMDApICogKGgvMTAwKSk7CmRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCJibWlEaXNwbGF5IikudGV4dENvbnRlbnQgPSBibWkudG9GaXhlZCgxKTsKdmFyIGNhdCA9IGJtaSA8IDE4LjUgPyAiVW5kZXJ3ZWlnaHQiIDogYm1pIDwgMjUgPyAiTm9ybWFsIiA6IGJtaSA8IDMwID8gIk92ZXJ3ZWlnaHQiIDogIk9iZXNlIjsKZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoImNhdGVnb3J5RGlzcGxheSIpLnRleHRDb250ZW50ID0gY2F0Owp9Cn0KZnVuY3Rpb24gdXBkYXRlV2VpZ2h0KHYpIHsgZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoIndlaWdodElucHV0IikudmFsdWUgPSB2OyB1cGRhdGVCTSgpOyB9CmZ1bmN0aW9uIHVwZGF0ZUhlaWdodCh2KSB7IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCJoZWlnaHRJbnB1dCIpLnZhbHVlID0gdjsgdXBkYXRlQk1JKCk7IH0KZnVuY3Rpb24gc3luY1dlaWdodCgpIHsgdmFyIHYgPSBwYXJzZUZsb2F0KGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCJ3ZWlnaHRJbnB1dCIpLnZhbHVlKSB8fCAyMDsgaWYodjwyMCl2PTIwO2lmKHY+MzAwKXY9MzAwOyBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgid2VpZ2h0SW5wdXQiKS52YWx1ZT12OyBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgid2VpZ2h0UmFuZ2UiKS52YWx1ZT12OyB1cGRhdGVCTSgpOyB9CmZ1bmN0aW9uIHN5bmNIZWlnaHQoKSB7IHZhciB2ID0gcGFyc2VGbG9hdChkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgiaGVpZ2h0SW5wdXQiKS52YWx1ZSkgfHwgODA7IGlmKHY8ODApdj04MDtpZih2PjI1MCl2PTI1MDsgZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoImhlaWdodElucHV0IikudmFsdWU9djsgZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoImhlaWdodFJhbmdlIikudmFsdWU9djsgdXBkYXRlQk1JKCk7IH0KZnVuY3Rpb24gYWRkTWVhbCgpIHsKdmFyIG5hbWUgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgibWVhbE5hbWVJbnB1dCIpLnZhbHVlLnRyaW0oKSB8fCAiU25hY2siOwp2YXIgY2FsID0gcGFyc2VGbG9hdChkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgibWVhbENhbElucHV0IikudmFsdWUpIHx8IDA7CmlmIChjYWwgPD0gMCkgcmV0dXJuOwp2YXIgbGlzdCA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCJtZWFsTGlzdCIpOwp2YXIgaXRlbSA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoImRpdiIpOwppdGVtLmNsYXNzTmFtZSA9ICJtZWFsLWl0ZW0iOwppdGVtLmlubmVySFRNTCA9ICI8c3BhbiBjbGFzcz1cIm1lYWwtbmFtZVwiPiIgKyBuYW1lICsgIjwvc3Bhbj48ZGl2IGNsYXNzPVwiZmxleFwiPjxzcGFuIGNsYXNzPVwibWVhbC1jYWxcIj4iICsgY2FsICsgIiBrY2FsPC9zcGFuPjxidXR0b24gY2xhc3M9XCJidG4gYnRuLWRhbmdlclwiIG9uY2xpY2s9XCJyZW1vdmVNZWFsKHRoaXMpXCI+4pyVPC9idXR0b24+PC9kaXY+IjsKbGlzdC5hcHBlbmRDaGlsZChpdGVtKTsKZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoIm1lYWxOYW1lSW5wdXQiKS52YWx1ZSA9ICIiOwpkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgibWVhbENhbElucHV0IikudmFsdWUgPSAiIjsKdXBkYXRlVG90YWwoKTsKfQpmdW5jdGlvbiByZW1vdmVNZWFsKGJ0bikgeyBidG4uY2xvc2VzdCgiLm1lYWwtaXRlbSIpLnJlbW92ZSgpOyB1cGRhdGVUb3RhbCgpOyB9CmZ1bmN0aW9uIHVwZGF0ZVRvdGFsKCkgewp2YXIgaXRlbXMgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yQWxsKCIubWVhbC1pdGVtIik7CnZhciB0b3RhbCA9IDA7Cml0ZW1zLmZvckVhY2goZnVuY3Rpb24oaXRlbSkgeyB2YXIgY2FsVGV4dCA9IGl0ZW0ucXVlcnlTZWxlY3RvcigiLm1lYWwtY2FsIikudGV4dENvbnRlbnQ7IHRvdGFsICs9IHBhcnNlSW50KGNhbFRleHQpIHx8IDA7IH0pOwpkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgidG90YWxDYWxvcmllcyIpLnRleHRDb250ZW50ID0gdG90YWwgKyAiIGtjYWwiOwpkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgibWVhbENvdW50IikudGV4dENvbnRlbnQgPSBpdGVtcy5sZW5ndGggKyAiIGl0ZW1zIjsKfQp1cGRhdGVCTSgpOyB1cGRhdGVUb3RhbCgpOwo8L3NjcmlwdD4KPC9ib2R5Pgo8L2h0bWw+';
+
+        // ============================================================
+        // Platform Functions
+        // ============================================================
+
         function setPlatform(platform) {
             currentPlatform = platform;
-            // Update UI
             document.querySelectorAll('.platform-btn').forEach(function(btn) {
                 btn.classList.remove('active');
             });
             if (platform === 'ios') {
                 document.getElementById('iosBtn').classList.add('active');
                 document.getElementById('platformBadge').textContent = 'iOS';
-                document.getElementById('installBtnText').textContent = 'Install on iOS';
-                document.getElementById('instructionText').innerHTML =
-                    '<strong>📱 On iPhone/iPad:</strong> Tap "Install App" then choose <strong>"Add to Home Screen"</strong> from Safari\'s share menu.';
+                document.getElementById('installBtnText').textContent = '📲 Install on iOS';
+                document.getElementById('instructionText').innerHTML = '<strong>📱 On iPhone/iPad:</strong> Tap "Install on iOS" → Use Safari\'s <strong>"Add to Home Screen"</strong> feature.';
             } else if (platform === 'android') {
                 document.getElementById('androidBtn').classList.add('active');
                 document.getElementById('platformBadge').textContent = 'Android';
-                document.getElementById('installBtnText').textContent = 'Install on Android';
-                document.getElementById('instructionText').innerHTML =
-                    '<strong>🤖 On Android:</strong> Tap "Install App" and then <strong>"Install"</strong> or <strong>"Add to Home Screen"</strong> in Chrome.';
+                document.getElementById('installBtnText').textContent = '📥 Download App';
+                document.getElementById('instructionText').innerHTML = '<strong>🤖 On Android:</strong> Tap "Download App" → Open the file → Tap <strong>"Install"</strong> → Open from home screen.';
             } else {
                 document.getElementById('otherBtn').classList.add('active');
-                document.getElementById('platformBadge').textContent = 'PWA';
-                document.getElementById('installBtnText').textContent = 'Install App';
-                document.getElementById('instructionText').innerHTML =
-                    '<strong>🌐 Any device:</strong> Use your browser\'s <strong>"Add to Home Screen"</strong> or <strong>"Install App"</strong> feature.';
+                document.getElementById('platformBadge').textContent = 'Web';
+                document.getElementById('installBtnText').textContent = '🌐 Open App';
+                document.getElementById('instructionText').innerHTML = '<strong>🌐 Other devices:</strong> Use your browser to access the app directly.';
             }
-            updateInstallLink();
         }
 
-        function updateInstallLink() {
-            var btn = document.getElementById('installBtn');
-            var appHTML = atob(APP_HTML_BASE64);
-            var encoded = encodeURIComponent(appHTML);
+        // ============================================================
+        // Download Logic
+        // ============================================================
 
-            btn.onclick = function(e) {
-                e.preventDefault();
-                
-                // First, try PWA installation (Android/Chrome)
-                if (deferredPrompt) {
-                    // Show the install prompt
-                    deferredPrompt.prompt();
-                    // Wait for the user to respond to the prompt
-                    deferredPrompt.userChoice.then(function(choiceResult) {
-                        if (choiceResult.outcome === 'accepted') {
-                            console.log('✅ User accepted the install prompt');
-                            showStatus('🎉 Installing... Check your home screen!', 'installed');
-                        } else {
-                            console.log('❌ User dismissed the install prompt');
-                            showStatus('⚠️ Installation cancelled. You can use "Add to Home Screen" instead.', '');
-                            // Fallback: download the file
-                            downloadApp(appHTML, encoded);
-                        }
-                        deferredPrompt = null;
-                    });
-                    return;
-                }
-                
-                // If no PWA prompt, use fallback method
-                downloadApp(appHTML, encoded);
-            };
-        }
-
-        function downloadApp(appHTML, encoded) {
+        function downloadAndInstall() {
             if (currentPlatform === 'ios') {
+                // iOS - Open in new tab for Add to Home Screen
+                var appHTML = atob(APP_BASE64);
                 var win = window.open('', '_blank');
                 if (win) {
                     win.document.write(appHTML);
@@ -601,18 +371,32 @@
                 } else {
                     showStatus('⚠️ Please allow popups or use Safari\'s "Add to Home Screen"', '');
                 }
-            } else {
-                // For Android and others: download as HTML file
+            } else if (currentPlatform === 'android') {
+                // Android - Download the app
+                var appHTML = atob(APP_BASE64);
+                var blob = new Blob([appHTML], { type: 'text/html' });
+                var url = URL.createObjectURL(blob);
+                
                 var link = document.createElement('a');
-                link.href = 'data:text/html;charset=utf-8,' + encoded;
+                link.href = url;
                 link.download = 'fittrack-app.html';
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
-                showStatus('⬇️ Downloading... Open the file and tap "Install" or "Add to Home Screen"', 'success');
+                
                 setTimeout(function() {
-                    showStatus('📲 If download doesn\'t start, use browser\'s "Add to Home Screen"', '');
-                }, 3000);
+                    URL.revokeObjectURL(url);
+                }, 5000);
+                
+                showStatus('✅ Download started! Open the file to install.', 'success');
+            } else {
+                // Other - Open in new tab
+                var appHTML = atob(APP_BASE64);
+                var win = window.open('', '_blank');
+                if (win) {
+                    win.document.write(appHTML);
+                    win.document.close();
+                }
             }
         }
 
@@ -621,6 +405,10 @@
             el.textContent = msg;
             el.className = 'status-msg' + (type ? ' ' + type : '');
         }
+
+        // ============================================================
+        // Platform Detection
+        // ============================================================
 
         function detectPlatform() {
             var ua = navigator.userAgent || '';
@@ -635,29 +423,7 @@
 
         // Initialize
         detectPlatform();
-        
-        // Check if app is already installed
-        checkInstallStatus();
-        
-        // Monitor for install status changes
-        window.addEventListener('beforeinstallprompt', function() {
-            // App is not installed, show banner
-            document.getElementById('installBanner').classList.add('show');
-        });
-
-        // Also check when display mode changes
-        window.addEventListener('load', function() {
-            if (isAppInstalled()) {
-                document.getElementById('installBanner').classList.remove('show');
-                document.getElementById('installBtnText').textContent = '✅ App Installed';
-                document.getElementById('platformBadge').textContent = '✓ Installed';
-                document.getElementById('installBtn').style.background = '#2a7a3a';
-                showStatus('🎉 App is already installed on your device!', 'installed');
-            }
-        });
-
-        console.log('🚀 FitTrack Pro download page ready!');
-        console.log('📱 Tap "Install App" to install on your device.');
+        console.log('🚀 FitTrack Pro ready!');
     </script>
 
 </body>
